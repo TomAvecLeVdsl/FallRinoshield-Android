@@ -30,7 +30,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private float last_accel_values[];
     LinkedList<Float> samples;
     public static final String TAG = "MainActivity" ;
-    private final float THRESHOLD =  8f;
+    private final float THRESHOLD =  15f;
+    private final int DEFAULT_SIZE = 10;
 
 //    private int fallThreshold = 10;
 
@@ -40,10 +41,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     private final static int CHECK_INTERVAL = 100;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        samples = new LinkedList<Float>();
 
         Log.d(TAG,"onCreate : Initialising Sensor") ;
         sensorManager =(SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -79,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
                     add(mAccelCurrent);
                     if (isFull() && isFallDetected()){
-                        Log.w(TAG, "Fall detected by window class");
+                        Log.w(TAG, "Fall detected");
 
                     }
 //                    Inital approach
