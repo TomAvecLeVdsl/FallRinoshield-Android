@@ -22,7 +22,7 @@ import static java.lang.Math.sqrt;
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
 
     private SensorManager sensorManager;
-    Sensor accelerometer;
+    Sensor accelerometer;-
 
     private long lastUpdate = -1;
 
@@ -31,9 +31,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     LinkedList<Float> samples;
     public static final String TAG = "MainActivity" ;
     private final float THRESHOLD =  15f;
-    private final int DEFAULT_SIZE = 10;
-
-//    private int fallThreshold = 10;
 
     private float mAccelCurrent = SensorManager.GRAVITY_EARTH;
     private float mAccelLast = SensorManager.GRAVITY_EARTH;
@@ -74,26 +71,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                     mAccelCurrent =(float)Math.sqrt(accel_values[0]* accel_values[0] + accel_values[1]*accel_values[1]
                             + accel_values[2]*accel_values[2]);
 
-                    // Initial approach
-//                    float delta = mAccelCurrent - mAccelLast;
-//                    mAccel = mAccel * 0.9f + delta;
-
-
 
                     add(mAccelCurrent);
                     if (isFull() && isFallDetected()){
                         Log.w(TAG, "Fall detected");
 
                     }
-//                    Inital approach
-//                    =====================================
-//                    if (mAccel > fallThreshold) {
-//
-//                        Log.w(TAG, "acceleration greater than threshold");
-//                        // Send the value back to the Activity
-//                        msg = mHandler.obtainMessage(Constants.MESSAGE_EMERGENCY);
-//                        mHandler.sendMessage(msg);
-//                    }
                 }
 
                 last_accel_values = accel_values.clone();
