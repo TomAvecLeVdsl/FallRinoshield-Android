@@ -19,7 +19,7 @@ import android.util.Log;
 public class MainActivity extends Activity implements SensorEventListener  {
 
 
-    private static final float SHAKE_THRESHOLD = 10f; // m/S**2
+    private static final float SHAKE_THRESHOLD = -5; // m/S**2
     private static final int MIN_TIME_BETWEEN_SHAKES_MILLISECS = 500;
     private long mLastShakeTime;
     private SensorManager mSensorMgr;
